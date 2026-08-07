@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fcf3;
+  --foreground: #111111;
+  --font-sans: var(--font-outfit), "Outfit", system-ui, -apple-system, sans-serif;
+  --font-cormorant: var(--font-cormorant), "Cormorant Garamond", "Cormorant", Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --font-sans: var(--font-outfit), "Outfit", system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", "Cormorant", Georgia, serif;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force Cormorant font for all font-serif and font-cormorant elements */
+.font-serif,
+.font-cormorant {
+  font-family: var(--font-cormorant), "Cormorant Garamond", "Cormorant", Georgia, serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
 }
