@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Cormorant_Garamond } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -88,11 +89,29 @@ export default function RootLayout({
     ]
   };
 
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-5N7V0B3X6";
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${outfit.variable} ${cormorant.variable} antialiased bg-[#f8fcf3] text-[#111111]`}
       >
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
