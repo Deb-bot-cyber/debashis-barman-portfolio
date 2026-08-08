@@ -1,0 +1,180 @@
+{
+  "brandLogos": [
+    {
+      "name": "messyprogrammer",
+      "icon": "▲",
+      "image": "/uploads/1786174511381_Screenshot_2026-08-08_130044-removebg-preview.png",
+      "id": "1"
+    },
+    {
+      "name": "dream records",
+      "icon": "●",
+      "image": "/uploads/1786174598615_image-removebg-preview.png",
+      "id": "2"
+    },
+    {
+      "name": "sealand logistics",
+      "icon": "✦",
+      "image": "/uploads/1786174677584_image-removebg-preview__1_.png",
+      "id": "3"
+    },
+    {
+      "name": "medikzo.com",
+      "icon": "◎",
+      "image": "https://scan2card.com/assets/Scan2CardLogos/Scan2Card_Transparent.png",
+      "id": "4"
+    },
+    {
+      "name": "Envizn Labs",
+      "icon": "◆",
+      "image": "/uploads/1786175669298_image-removebg-preview__4_.png",
+      "id": "5"
+    },
+    {
+      "name": "Pannel IQ",
+      "icon": "❖",
+      "image": "/uploads/1786174751744_image-removebg-preview__2_.png",
+      "id": "6"
+    },
+    {
+      "name": "Pixel Grabber",
+      "icon": "▲",
+      "image": "/uploads/1786175949637_image-removebg-preview__5_.png",
+      "id": "1786175956513"
+    }
+  ],
+  "worksImages": {
+    "column1": [
+      {
+        "id": "1786109206026",
+        "src": "/uploads/1786109198359_058d769c8d9805894c332757e127ff7d.webp",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786109222665",
+        "src": "/uploads/1786109220853_dd45d894ceb577dd1f6ea0bdf2cc43af.webp",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786109233099",
+        "src": "/uploads/1786109230815_original-e4c19e30927f5082703526dd7d46595b.webp",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786172026532",
+        "src": "/uploads/1786172025439_original-ac66a15496fee4eecbf31795b509cf22.webp",
+        "alt": "Bento Showcase"
+      }
+    ],
+    "column2": [
+      {
+        "id": "1786109275429",
+        "src": "/uploads/1786109274403_original-47f91d5eff713917e3a383337b11632c.png",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786109286068",
+        "src": "/uploads/1786109284413_5f5f996aa8a394bf7a77b0d8af48bd5e.png",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786109299110",
+        "src": "/uploads/1786109298159_Frame_2147260132.png",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786172115429",
+        "src": "/uploads/1786172114164_b6e9a67080457e184584b62d02c832f2.webp",
+        "alt": "Bento Showcase"
+      }
+    ],
+    "column3": [
+      {
+        "id": "1786171865255",
+        "src": "/uploads/1786171861616_PanelIQ__2_.png",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786171948468",
+        "src": "/uploads/1786171946277_341e939038bb3e1030e380ae96a79153.webp",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786171955741",
+        "src": "/uploads/1786171954058_de926d279e8a3939952477f15db66fd8.webp",
+        "alt": "Bento Showcase"
+      },
+      {
+        "id": "1786172154158",
+        "src": "/uploads/1786172152831_6a0175486f919a6a42811cc9f7154901.webp",
+        "alt": "Bento Showcase"
+      }
+    ]
+  },
+  "selectedWorks": [
+    {
+      "title": "IdeaPilot AI SaaS Product",
+      "category1": "AI SaaS",
+      "category2": "Product Design",
+      "image": "/uploads/1786109532828_original-e4c19e30927f5082703526dd7d46595b.webp",
+      "id": "1"
+    },
+    {
+      "title": "Havenly Finance SaaS Dashboard",
+      "category1": "Web App",
+      "category2": "UX/UI Design",
+      "image": "/uploads/1786109608116_original-47f91d5eff713917e3a383337b11632c.png",
+      "id": "2"
+    },
+    {
+      "title": "Muzify Music Distribution SaaS",
+      "category1": "SaaS",
+      "category2": "Product Design",
+      "image": "/uploads/1786172206577_Analytics_Overview.png",
+      "id": "1786172247573"
+    },
+    {
+      "title": "Filllo - Ops Calendar SaaS ",
+      "category1": "AI SaaS",
+      "category2": "Product Design",
+      "image": "/uploads/1786173334225_3dcc8e7d8394157279fc46fa3e5fbc71.webp",
+      "id": "1786173421447"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "quote": "Working with Debashis was seamless from start to finish. He understood our goals quickly, asked the right questions, and delivered a design system that scaled perfectly with our growing modern best app.",
+      "author": "Daniel Reed",
+      "role": "Founder of NovaLabs",
+      "avatar": "/testimonial_avatar_1.png"
+    },
+    {
+      "id": "2",
+      "quote": "Debashis brought our product vision to life with incredible attention to detail. His ability to balance business needs with user empathy made our platform not just beautiful — but genuinely useful.",
+      "author": "Sarah Nguyen",
+      "role": "Product Manager at FlowSync",
+      "avatar": "/testimonial_avatar_2.png"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "1",
+      "title": "How to Build a Design System That Scales",
+      "excerpt": "A deep dive into creating flexible, maintainable, and high-performance design systems for modern SaaS products.",
+      "content": "Design systems are the backbone of modern product development. By creating a unified language between design and engineering, teams can ship products faster, with fewer defects, and maintain visual consistency across all touchpoints.\n\n### Why Design Systems Matter\nIn a fast-growing startup, UI debt accumulates rapidly. Developers recreate buttons, designers invent new colors, and the user experience becomes fragmented. A design system solves this by introducing reusable tokens, patterns, and components.\n\n### Step 1: Define Design Tokens\nTokens are the smallest design decisions, like colors, spacing, and typography. Storing these as variables (CSS or JS) ensures that changes propagate throughout the app instantly.\n\n### Step 2: Component Library Integration\nBuild or use primitives like Tailwind/shadcn to set up structural components like input fields, alerts, and navigation menus. Keep them flexible using React props.\n\n### Step 3: Clear Documentation\nA design system is only as good as its documentation. Document not just *what* components exist, but *how* and *when* to use them.",
+      "image": "/project_ai_dashboard.png",
+      "date": "2026-08-01",
+      "slug": "how-to-build-a-design-system"
+    },
+    {
+      "id": "2",
+      "title": "The Power of AI Automation in SaaS Operations",
+      "excerpt": "Discover how automating workflows with n8n can save your team hours of manual work and reduce human error.",
+      "content": "AI automation is transforming the way SaaS companies operate. By connecting various APIs and automating manual data entry, teams can focus on high-leverage activities like strategy and design rather than repetitive tasks.\n\n### What is n8n?\nn8n is a node-based workflow automation tool that allows you to connect multiple services securely. Since it is open-source and self-hostable, it is highly favored by companies that want to keep control of their data privacy.\n\n### Example Automations\n1. **User Onboarding Sync**: When a user signs up on your site, automatically add them to your CRM, trigger a welcome email sequence, and post a notification in Slack.\n2. **AI Summarization**: Automatically pull new support tickets, send them to an LLM for classification and summarization, and add tags based on priority.\n\n### Conclusion\nBy automating critical business workflows, you can scale operations efficiently without linearly increasing headcount.",
+      "image": "/project_fintech.png",
+      "date": "2026-08-05",
+      "slug": "power-of-ai-automation-saas"
+    }
+  ]
+}

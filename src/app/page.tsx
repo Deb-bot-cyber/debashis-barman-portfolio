@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { WorksSection } from "@/components/WorksSection";
+import { ServicesSection } from "@/components/ServicesSection";
 import { AboutStatementSection } from "@/components/AboutStatementSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <WhatsAppButton />
       <HeroSection />
       <WorksSection />
+      <ServicesSection />
       <AboutStatementSection />
       <HowItWorksSection />
       <TestimonialsSection />

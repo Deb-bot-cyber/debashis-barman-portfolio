@@ -3,37 +3,69 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Layers } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const BRAND_LOGOS = [
-  { name: "messyprogrammer", icon: "▲" },
-  { name: "dream records", icon: "●" },
-  { name: "sealand logistics", icon: "✦" },
-  { name: "medikzo.com", icon: "◎" },
-  { name: "Envizn Labs", icon: "◆" },
-  { name: "Pannel IQ", icon: "❖" },
+interface BrandLogo {
+  id: string;
+  name: string;
+  icon?: string;
+  image?: string;
+}
+
+interface WorkImage {
+  id: string;
+  src: string;
+  alt: string;
+}
+
+// Fallback data if API fails
+const FALLBACK_LOGOS: BrandLogo[] = [
+  { id: "1", name: "messyprogrammer", icon: "▲" },
+  { id: "2", name: "dream records", icon: "●" },
+  { id: "3", name: "sealand logistics", icon: "✦" },
+  { id: "4", name: "medikzo.com", icon: "◎" },
+  { id: "5", name: "Envizn Labs", icon: "◆" },
+  { id: "6", name: "Pannel IQ", icon: "❖" },
 ];
 
-const COLUMN_1_IMAGES = [
-  { src: "/project_ai_dashboard.png", alt: "AI Dashboard Project" },
-  { src: "/project_hometrust.png", alt: "Hometrust Real Estate" },
-  { src: "/project_fintech.png", alt: "Fintech Digital Banking" },
+const FALLBACK_COL1: WorkImage[] = [
+  { id: "w1", src: "/project_ai_dashboard.png", alt: "AI Dashboard Project" },
+  { id: "w2", src: "/project_hometrust.png", alt: "Hometrust Real Estate" },
+  { id: "w3", src: "/project_fintech.png", alt: "Fintech Digital Banking" },
 ];
 
-const COLUMN_2_IMAGES = [
-  { src: "/project_healthcare.png", alt: "Healthcare Platform" },
-  { src: "/project_furniture.png", alt: "Timeless Furniture Design" },
-  { src: "/project_agency.png", alt: "Creative Product Agency" },
+const FALLBACK_COL2: WorkImage[] = [
+  { id: "w4", src: "/project_healthcare.png", alt: "Healthcare Platform" },
+  { id: "w5", src: "/project_furniture.png", alt: "Timeless Furniture Design" },
+  { id: "w6", src: "/project_agency.png", alt: "Creative Product Agency" },
 ];
 
-const COLUMN_3_IMAGES = [
-  { src: "/project_hometrust.png", alt: "Hometrust Real Estate" },
-  { src: "/project_ai_dashboard.png", alt: "AI Dashboard Project" },
-  { src: "/project_healthcare.png", alt: "Healthcare Platform" },
+const FALLBACK_COL3: WorkImage[] = [
+  { id: "w7", src: "/project_hometrust.png", alt: "Hometrust Real Estate" },
+  { id: "w8", src: "/project_ai_dashboard.png", alt: "AI Dashboard Project" },
+  { id: "w9", src: "/project_healthcare.png", alt: "Healthcare Platform" },
 ];
 
 export function WorksSection() {
   const [isHovered, setIsHovered] = useState(false);
+  const [brandLogos, setBrandLogos] = useState<BrandLogo[]>(FALLBACK_LOGOS);
+  const [col1, setCol1] = useState<WorkImage[]>(FALLBACK_COL1);
+  const [col2, setCol2] = useState<WorkImage[]>(FALLBACK_COL2);
+  const [col3, setCol3] = useState<WorkImage[]>(FALLBACK_COL3);
+
+  useEffect(() => {
+    fetch("/api/db")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.brandLogos?.length) setBrandLogos(data.brandLogos);
+        if (data.worksImages?.column1?.length) setCol1(data.worksImages.column1);
+        if (data.worksImages?.column2?.length) setCol2(data.worksImages.column2);
+        if (data.worksImages?.column3?.length) setCol3(data.worksImages.column3);
+      })
+      .catch(() => {
+        // Keep fallback data on error
+      });
+  }, []);
 
   return (
     <section id="works" className="relative w-full bg-[#f8fcf3] py-16 px-4 sm:px-8 overflow-hidden font-sans">
@@ -49,10 +81,22 @@ export function WorksSection() {
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 25, ease: "linear", repeat: Infinity }}
         >
-          {[...BRAND_LOGOS, ...BRAND_LOGOS, ...BRAND_LOGOS].map((brand, index) => (
+          {[...brandLogos, ...brandLogos, ...brandLogos].map((brand, index) => (
             <div key={index} className="inline-flex items-center gap-3 text-slate-400 font-medium text-lg tracking-wide select-none">
-              <span className="text-xl opacity-60">{brand.icon}</span>
-              <span className="font-semibold tracking-tight text-slate-700">{brand.name}</span>
+              {brand.image ? (
+                <div className="flex items-center justify-center">
+                  <img 
+                    src={brand.image} 
+                    alt={brand.name} 
+                    className="h-8 sm:h-9 w-auto max-w-[160px] object-contain opacity-85 hover:opacity-100 transition-all mix-blend-multiply filter grayscale hover:grayscale-0" 
+                  />
+                </div>
+              ) : (
+                <>
+                  <span className="text-xl opacity-60">{brand.icon || "✦"}</span>
+                  <span className="font-semibold tracking-tight text-slate-700">{brand.name}</span>
+                </>
+              )}
             </div>
           ))}
         </motion.div>
@@ -98,9 +142,9 @@ export function WorksSection() {
               animate={{ y: ["0%", "-50%"] }}
               transition={{ duration: 22, ease: "linear", repeat: Infinity }}
             >
-              {[...COLUMN_1_IMAGES, ...COLUMN_1_IMAGES].map((img, idx) => (
+              {[...col1, ...col1].map((img, idx) => (
                 <div key={idx} className="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg border border-black/5 bg-white">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top hover:scale-105 transition-transform duration-500" />
+                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top hover:scale-105 transition-transform duration-500" unoptimized />
                 </div>
               ))}
             </motion.div>
@@ -113,9 +157,9 @@ export function WorksSection() {
               animate={{ y: ["-50%", "0%"] }}
               transition={{ duration: 26, ease: "linear", repeat: Infinity }}
             >
-              {[...COLUMN_2_IMAGES, ...COLUMN_2_IMAGES].map((img, idx) => (
+              {[...col2, ...col2].map((img, idx) => (
                 <div key={idx} className="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg border border-black/5 bg-white">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top hover:scale-105 transition-transform duration-500" />
+                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top hover:scale-105 transition-transform duration-500" unoptimized />
                 </div>
               ))}
             </motion.div>
@@ -128,9 +172,9 @@ export function WorksSection() {
               animate={{ y: ["0%", "-50%"] }}
               transition={{ duration: 24, ease: "linear", repeat: Infinity }}
             >
-              {[...COLUMN_3_IMAGES, ...COLUMN_3_IMAGES].map((img, idx) => (
+              {[...col3, ...col3].map((img, idx) => (
                 <div key={idx} className="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg border border-black/5 bg-white">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top hover:scale-105 transition-transform duration-500" />
+                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top hover:scale-105 transition-transform duration-500" unoptimized />
                 </div>
               ))}
             </motion.div>

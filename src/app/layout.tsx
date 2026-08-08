@@ -65,11 +65,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Debashis Barman",
+    "jobTitle": "SaaS Product Designer & AI Automation Consultant",
+    "url": "https://debashisbarman.com",
+    "image": "https://debashisbarman.com/debashis_barman_heroimage.png",
+    "sameAs": [
+      "https://fiverr.com",
+      "https://linkedin.com",
+      "https://twitter.com"
+    ],
+    "knowsAbout": [
+      "Product Design",
+      "UI/UX Design",
+      "Design Systems",
+      "Next.js Development",
+      "Framer Development",
+      "AI Automation",
+      "n8n Workflows"
+    ]
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${outfit.variable} ${cormorant.variable} antialiased bg-[#f8fcf3] text-[#111111]`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

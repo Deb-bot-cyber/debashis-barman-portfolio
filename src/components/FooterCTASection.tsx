@@ -53,6 +53,7 @@ export function FooterCTASection() {
           {/* Left Nav Links */}
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-10">
             <a href="#" className="hover:text-black transition-colors">Home</a>
+            <a href="#services" className="hover:text-black transition-colors">Services</a>
             <a href="#about" className="hover:text-black transition-colors">About</a>
             <a href="#projects" className="hover:text-black transition-colors">Portfolio</a>
             <a href="#works" className="hover:text-black transition-colors">Blog</a>

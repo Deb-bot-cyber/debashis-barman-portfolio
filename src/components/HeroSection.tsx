@@ -1,13 +1,121 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight, Menu } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Menu, X } from "lucide-react";
+
+const navLinks = [
+  { label: "Home", href: "#" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Portfolio", href: "#projects" },
+  { label: "Blog", href: "#works" },
+  { label: "Contact", href: "#contact" },
+];
+
+const titles = [
+  "Product Designer",
+  "UI/UX Designer",
+  "Website Developer",
+  "AI Automation",
+];
 
 export function HeroSection() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % titles.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full sm:min-h-screen bg-[#f8fcf3] flex flex-col overflow-hidden font-sans">
       
+      {/* ========== NAVIGATION DRAWER ========== */}
+      <AnimatePresence>
+        {drawerOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998]"
+              onClick={() => setDrawerOpen(false)}
+            />
+            
+            {/* Drawer Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 h-full w-[320px] sm:w-[380px] bg-[#111111] z-[999] flex flex-col shadow-2xl"
+            >
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between px-8 pt-8 pb-6">
+                <span className="font-serif italic text-xl text-white/90 tracking-tight select-none">
+                  Navigation
+                </span>
+                <button
+                  onClick={() => setDrawerOpen(false)}
+                  aria-label="Close Navigation Menu"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5 text-white" />
+                </button>
+              </div>
+
+              {/* Divider */}
+              <div className="mx-8 h-px bg-white/10" />
+
+              {/* Nav Links */}
+              <nav className="flex flex-col px-8 pt-8 gap-1">
+                {navLinks.map((link, idx) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setDrawerOpen(false)}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + idx * 0.06, duration: 0.3 }}
+                    className="group flex items-center justify-between py-4 border-b border-white/5 last:border-b-0 transition-colors"
+                  >
+                    <span className="text-2xl font-medium text-white/80 group-hover:text-[#a3f929] tracking-tight transition-colors">
+                      {link.label}
+                    </span>
+                    <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-[#a3f929] group-hover:translate-x-1 transition-all" />
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* Bottom CTA in Drawer */}
+              <div className="mt-auto px-8 pb-10">
+                <div className="h-px bg-white/10 mb-8" />
+                <a
+                  href="https://cal.com/debashis-barman-182"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setDrawerOpen(false)}
+                  className="inline-flex items-center gap-2.5 bg-[#a3f929] hover:bg-[#b5ff40] text-[#111111] text-sm font-semibold px-6 py-3 rounded-full transition-all select-none group w-full justify-center"
+                >
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span>Get In Touch</span>
+                </a>
+                <p className="text-xs text-white/30 text-center mt-4 select-none">
+                  © 2026 Debashis Barman
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* Background Radial Lime Spotlight Gradient */}
       <div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -25,6 +133,7 @@ export function HeroSection() {
             Debashis Barman
           </a>
           <button 
+            onClick={() => setDrawerOpen(true)}
             aria-label="Open Navigation Menu"
             className="w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-black/10 shadow-xs flex items-center justify-center text-black hover:bg-white hover:scale-105 transition-all cursor-pointer select-none"
           >
@@ -42,14 +151,20 @@ export function HeroSection() {
           >
             Hi I&apos;m Debashis
           </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="font-serif italic text-8xl md:text-9xl lg:text-[138px] font-normal text-[#111111] leading-[0.88] -mt-6 z-10"
-          >
-            Product Designer
-          </motion.div>
+          <div className="relative -mt-6 z-10 flex justify-center items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={titles[titleIndex]}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="font-serif italic text-8xl md:text-9xl lg:text-[138px] font-normal text-[#111111] leading-[0.88] whitespace-nowrap"
+              >
+                {titles[titleIndex]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Hero Central Portrait */}
@@ -140,8 +255,9 @@ export function HeroSection() {
             Debashis Barman
           </a>
           <button 
+            onClick={() => setDrawerOpen(true)}
             aria-label="Open Navigation Menu"
-            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-black/10 shadow-xs flex items-center justify-center text-black"
+            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-black/10 shadow-xs flex items-center justify-center text-black active:scale-95 transition-all cursor-pointer"
           >
             <Menu className="w-4.5 h-4.5 text-black" />
           </button>
@@ -157,14 +273,20 @@ export function HeroSection() {
           >
             Hi I&apos;m Debashis
           </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="font-serif italic text-[44px] font-normal text-[#111111] leading-[0.9] -mt-1 z-10"
-          >
-            Product Designer
-          </motion.div>
+          <div className="relative -mt-1 z-10 flex justify-center items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={titles[titleIndex]}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="font-serif italic text-[44px] font-normal text-[#111111] leading-[0.9] whitespace-nowrap"
+              >
+                {titles[titleIndex]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Mobile: Available Badge */}

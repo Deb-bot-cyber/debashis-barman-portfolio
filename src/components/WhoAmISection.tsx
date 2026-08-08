@@ -20,6 +20,11 @@ export function WhoAmISection() {
       company: "Virtuous Techlogic",
       period: "Feb 2023 → Jan 2024",
     },
+    {
+      role: "Freelance Designer",
+      company: "Fiverr",
+      period: "2020 → Present",
+    },
   ];
 
   return (
@@ -35,7 +40,7 @@ export function WhoAmISection() {
 
         {/* Section Heading */}
         <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-[#111111] mb-16 select-none">
-          Pushing Boundaries <span className="text-slate-400 font-normal text-3xl sm:text-5xl">since 2011</span>
+          Pushing Boundaries <span className="text-slate-400 font-normal text-3xl sm:text-5xl">since 2020</span>
         </h2>
 
         {/* 2-Column Split Layout */}
