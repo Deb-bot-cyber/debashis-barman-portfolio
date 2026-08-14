@@ -89,7 +89,7 @@ export default function RootLayout({
     ]
   };
 
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-5N7V0B3X6";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-G7SXLB20DV";
 
   return (
     <html lang="en" className="scroll-smooth">
